@@ -16,6 +16,8 @@ use App\Http\Controllers\BelajarController;
 */
 
 Route::get('doni', [BelajarController::class, 'doni']);
+Route::get('doni/create', [BelajarController::class, 'create']);
+Route::post('doni', [BelajarController::class, 'store']);
 
 // Route::get('/', function () {
 //     return view('welcome');
