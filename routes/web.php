@@ -18,6 +18,10 @@ use App\Http\Controllers\BelajarController;
 Route::get('doni', [BelajarController::class, 'doni']);
 Route::get('doni/create', [BelajarController::class, 'create']);
 Route::post('doni', [BelajarController::class, 'store']);
+Route::get('doni/{id}/edit', [BelajarController::class, 'edit']);
+Route::put('doni/{id}', [BelajarController::class, 'update']);
+
+// put, patch, delete
 
 // Route::get('/', function () {
 //     return view('welcome');

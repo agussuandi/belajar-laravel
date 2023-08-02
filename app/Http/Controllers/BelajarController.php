@@ -60,6 +60,40 @@ class BelajarController extends Controller
         $city->save();
 
         return redirect('doni'); #redirect berdasarkan path
-        return redirect()->back(); #redirect ke halaman terakhir
+        // return redirect()->back(); #redirect ke halaman terakhir
+    }
+
+    public function edit($id)
+    {
+        $city = City::findOrFail($id);
+
+        return view('doni.edit', [
+            'city' => $city
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        #cara 1
+        // City::find($id)->update([
+        //     'name' => $request->input('name')
+        // ]);
+
+        #cara 2
+        // $city = City::find($id);
+        // $city->name = $request->input('name');
+        // $city->save();
+
+        #cara 3
+        // City::updateOrCreate(
+        //     ['name' => $request->input('name')]
+        // );
+
+        #cara 4
+        City::upsert([
+            ['name' => $request->input('name')]
+        ], ['name']);
+
+        return redirect('doni');
     }
 }
